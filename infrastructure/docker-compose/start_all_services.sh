@@ -1,6 +1,7 @@
 #!/bin/bash
-#Start Postgres SQL &&
+#Start Postgres SQL
 docker compose -f common.yml -f postgres.yml up -d
+echo "Postgres started successfully!"
 
 # Start Zookeeper
 docker compose -f common.yml -f zookeeper.yml up -d
