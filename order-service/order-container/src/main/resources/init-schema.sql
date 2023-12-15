@@ -36,7 +36,7 @@ CREATE TABLE "order".order_items
 
 ALTER TABLE "order".order_items
     ADD CONSTRAINT "FK_ORDER_ID" FOREIGN KEY (order_id)
-    REFERENCES "order".orders (id) MATCH SIMPLEf
+    REFERENCES "order".orders (id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE CASCADE
     NOT VALID;
