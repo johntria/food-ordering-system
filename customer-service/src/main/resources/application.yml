@@ -1,0 +1,24 @@
+server:
+  port: 8184
+
+spring:
+  application:
+    name: customer-service
+  jpa:
+    open-in-view: false #Disable open session in view. In simple words a) execute query b) close session c) close database connection
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=customer?binaryTransfer=true&WriteBatchedInserts=true&stringtype=unspecified
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      platform: postgres
+      schema-locations: classpath:init-schema.sql
+      mode: always
+      data-locations: classpath:init-data.sql
