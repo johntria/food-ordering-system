@@ -1,7 +1,8 @@
 #!/bin/bash
-#Start Postgres SQL
+
 cd infrastructure/docker-compose
 
+#Start Postgres SQL
 docker compose -f common.yml -f postgres.yml up -d
 echo "Postgres started successfully!"
 
