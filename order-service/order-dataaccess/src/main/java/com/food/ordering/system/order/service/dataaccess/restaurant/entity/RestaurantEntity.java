@@ -19,7 +19,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order_restaurant_m_view", schema = "customer")
+@Table(name = "order_restaurant_m_view", schema = "restaurant")
 @IdClass(RestaurantEntityId.class)
 @Entity
 public class RestaurantEntity {
@@ -46,6 +46,6 @@ public class RestaurantEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(restaurantId,productId);
+        return Objects.hash(restaurantId, productId);
     }
 }
