@@ -19,6 +19,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-1:
+    container_name: broker-1
     image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-1
     ports:
@@ -36,6 +37,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-2:
+    container_name: broker-2
     image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-2
     ports:
@@ -53,6 +55,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-broker-3:
+    container_name: broker-3
     image: confluentinc/cp-kafka:${KAFKA_VERSION}
     hostname: kafka-broker-3
     ports:
@@ -70,6 +73,7 @@ services:
     networks:
       - ${GLOBAL_NETWORK:-kafka}
   kafka-manager:
+    container_name: kafka-manager
     image: hlebalbau/kafka-manager:stable
     restart: always
     ports:
