@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   schema-registry:
+    container_name: schema-registry
     image: confluentinc/cp-schema-registry:${KAFKA_VERSION}
     hostname: schema-registry
     depends_on:
