@@ -21,6 +21,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        format_sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
@@ -30,7 +31,6 @@ spring:
     init:
       platform: postgres
       schema-locations: classpath:init-schema.sql
-      data-locations: classpath:init-data.sql
       mode: always
 
 kafka-config:
