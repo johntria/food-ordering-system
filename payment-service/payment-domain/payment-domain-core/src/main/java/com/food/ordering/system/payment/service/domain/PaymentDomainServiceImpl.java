@@ -1,5 +1,6 @@
 package com.food.ordering.system.payment.service.domain;
 
+import static com.food.ordering.system.domain.DomainConstants.UTC;
 import com.food.ordering.system.domain.valueobject.Money;
 import com.food.ordering.system.domain.valueobject.PaymentStatus;
 import com.food.ordering.system.payment.service.domain.entity.CreditEntry;
@@ -13,6 +14,7 @@ import com.food.ordering.system.payment.service.domain.valueobject.CreditHistory
 import com.food.ordering.system.payment.service.domain.valueobject.TransactionType;
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -34,11 +36,11 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
         if (failureMessages.isEmpty()) {
             log.info("Payment is initiated for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.COMPLETED);
-            return new PaymentCompletedEvent(payment, ZonedDateTime.now());
+            return new PaymentCompletedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)));
         } else {
             log.info("Payment initiation is failed for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.FAILED);
-            return new PaymentFailedEvent(payment, ZonedDateTime.now(), failureMessages);
+            return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages);
         }
     }
 
@@ -54,11 +56,11 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
         if (failureMessages.isEmpty()) {
             log.info("Payment is cancelled for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.CANCELLED);
-            return new PaymentCancelledEvent(payment, ZonedDateTime.now());
+            return new PaymentCancelledEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)));
         } else {
             log.info("Payment cancellation is failed for order id: {}", payment.getOrderId().getValue());
             payment.updateStatus(PaymentStatus.FAILED);
-            return new PaymentFailedEvent(payment, ZonedDateTime.now(), failureMessages);
+            return new PaymentFailedEvent(payment, ZonedDateTime.now(ZoneId.of(UTC)), failureMessages);
         }
     }
 
