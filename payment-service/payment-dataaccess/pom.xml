@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>payment-dataacess</artifactId>
+    <artifactId>payment-dataaccess</artifactId>
 
     <dependencies>
         <dependency>
