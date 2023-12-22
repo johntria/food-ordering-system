@@ -82,7 +82,7 @@ public class PaymentDomainServiceImpl implements PaymentDomainService {
                                      List<CreditHistory> creditHistories,
                                      TransactionType transactionType) {
         creditHistories.add(CreditHistory.Builder.newBuilder()
-                .id(new CreditHistoryId(UUID.randomUUID()))
+                .creditHistoryId(new CreditHistoryId(UUID.randomUUID()))
                 .customerId(payment.getCustomerId())
                 .amount(payment.getPrice())
                 .transactionType(transactionType)
