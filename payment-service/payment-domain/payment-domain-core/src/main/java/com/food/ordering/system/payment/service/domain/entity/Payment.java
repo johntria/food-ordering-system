@@ -86,7 +86,7 @@ public class Payment extends AggregateRoot<PaymentId> {
         private Builder() {
         }
 
-        public static Builder newBuilder() {
+        public static Builder builder() {
             return new Builder();
         }
 
