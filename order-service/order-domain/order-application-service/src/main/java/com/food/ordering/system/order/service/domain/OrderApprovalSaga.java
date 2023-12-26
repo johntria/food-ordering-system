@@ -32,7 +32,7 @@ public class OrderApprovalSaga implements SagaStep<RestaurantApprovalResponse, E
         orderDomainService.approveOrder(order);
         orderSagaHelper.saveOrder(order);
         log.info("Order with id : {} is approved ", order.getId().getValue());
-        return null;
+        return EmptyEvent.INSTANCE;
     }
 
     @Override
