@@ -16,7 +16,7 @@ spring:
     name: order-service
   jpa:
     open-in-view: false #Disable open session in view. In simple words a) execute query b) close session c) close database connection
-    show-sql: true
+    show-sql: false
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     properties:
       hibernate:
