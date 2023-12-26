@@ -33,9 +33,9 @@ echo "Zookeeper started successfully!"
 ##TODO add depends on with include yml file .
 sleep 30
 
-# Start Kafka Cluster
-gnome-terminal --title="kafka_cluster" -- bash -c "docker compose -f common.yml -f kafka_cluster.yml up --build; exec bash"
-echo "Kafka Cluster started successfully!"
+# Start Kafka Clusters
+gnome-terminal --title="kafka_clusters" -- bash -c "docker compose -f common.yml -f kafka_cluster.yml up --build; exec bash"
+echo "Kafka Clusters started successfully!"
 
 # Start init_kafka
 gnome-terminal --title="init_kafka" -- bash -c "docker compose -f common.yml -f init_kafka.yml up --build; exec bash"
