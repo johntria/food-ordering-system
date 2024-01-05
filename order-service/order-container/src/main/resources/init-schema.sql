@@ -65,7 +65,7 @@ CREATE TYPE saga_status as ENUM('STARTED','FAILED','SUCCEEDED','PROCESSING','COM
 DROP TYPE IF EXISTS outbox_status;
 CREATE TYPE outbox_status as ENUM('STARTED','COMPLETED', 'FAILED');
 
-DROP TABLE "order".payment_outbox;
+DROP TABLE IF EXISTS "order".payment_outbox CASCADE;
 
 CREATE TABLE "order".payment_outbox
 (
