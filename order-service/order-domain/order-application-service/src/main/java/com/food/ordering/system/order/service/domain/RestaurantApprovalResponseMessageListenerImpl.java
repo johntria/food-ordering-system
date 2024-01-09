@@ -2,7 +2,6 @@ package com.food.ordering.system.order.service.domain;
 
 import com.food.ordering.system.order.service.domain.dto.message.RestaurantApprovalResponse;
 import static com.food.ordering.system.order.service.domain.entity.Order.FAILURE_MESSAGE_DELIMITER;
-import com.food.ordering.system.order.service.domain.event.OrderCancelledEvent;
 import com.food.ordering.system.order.service.domain.ports.input.message.listener.restauranapproval.RestaurantApprovalResponseMessageListener;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -27,8 +26,7 @@ public class RestaurantApprovalResponseMessageListenerImpl implements Restaurant
 
     @Override
     public void orderRejected(RestaurantApprovalResponse restaurantApprovalResponse) {
-        OrderCancelledEvent domainEvent = orderApprovalSaga.rollback(restaurantApprovalResponse);
-        log.info("Publishing order cancelled event for order id: {}", String.join(FAILURE_MESSAGE_DELIMITER, restaurantApprovalResponse.getFailureMessages()));
-        domainEvent.fire();
+        orderApprovalSaga.rollback(restaurantApprovalResponse);
+        log.info("Order approval saga rollback operation is completed  for order id: {} with failure message", String.join(FAILURE_MESSAGE_DELIMITER, restaurantApprovalResponse.getFailureMessages()));
     }
 }
